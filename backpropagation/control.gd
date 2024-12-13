@@ -154,7 +154,7 @@ class RedNeuronal:
 			self.pesos2.append(randf())
 		self.sesgos2.append(randf())
 
-	func entrenamiento(tasa_aprendizaje = 0.5, epocas = 1800):
+	func entrenamiento(tasa_aprendizaje = 0.5, epocas = 200):
 		for k in range(epocas):
 			var error = 0.0
 			for i in range(self.x.size()):

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="my_nmm"
-run/main_scene="res://neuro_hola.tscn"
+run/main_scene="res://backpropagation/neuro_hola.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

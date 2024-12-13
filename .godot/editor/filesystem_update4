@@ -1,0 +1,4 @@
+res://neuro_hola.tscn
+res://control.gd
+res://backpropagation/neuro_hola.tscn
+res://backpropagation/control.gd
