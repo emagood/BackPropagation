@@ -1,7 +1,7 @@
 extends Control
 var total_entrenado = 0 
 var red_neuronal
-var epoca = 30
+var epoca = 1500
 # Datos de 121 carros -> [Antigüedad, costo de salida al mercado]
 
 var x = [[0.0, 1.0], [0.1, 1.0], [0.2, 1.0], [0.3, 1.0], [0.4, 1.0],
@@ -155,7 +155,7 @@ class RedNeuronal:
 				self.pesos2[1] -= tasa_aprendizaje * gradiente_p22
 				self.sesgos2[0] -= tasa_aprendizaje * gradiente_sesgo21
 			
-			#print(error)
+			print(error)
 
 	func clasificacion(x1, x2):
 		var suma_o1 = x1 * self.pesos1[0] + x2 * self.pesos1[2] + self.sesgos1[0]

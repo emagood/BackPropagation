@@ -51,8 +51,8 @@ class RedNeuronal:
 			self.pesos2.append(randf())
 		self.sesgos2.append(randf())
 
-	func entrenamiento(tasa_aprendizaje = 0.4, epocas = 3000):
-		for k in range(epocas):
+	func entrenamiento(tasa_aprendizaje = 0.4, epocas = 4000):
+		for k in range(epocas ):
 			var error = 0.0
 			for i in range(self.x.size()):
 				# Entradas a las neuronas sigmoides ocultas
@@ -67,7 +67,7 @@ class RedNeuronal:
 				var suma_s = salida_o1 * self.pesos2[0] + salida_o2 * self.pesos2[1] + self.sesgos2[0]
 				
 				# Salida de la red neuronal
-				var y_gorro = 1.0 / (1.0 + exp(-suma_s))
+				var y_gorro = 1 / (1 + exp(-suma_s))
 
 				# Cálculo del error cuadrático
 				error += (0.5) * pow(self.y[i] - y_gorro, 2)
@@ -79,11 +79,11 @@ class RedNeuronal:
 
 				var gradiente_p11 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[0] * (salida_o1 * (1 - salida_o1)) * self.x[i][0]
 				var gradiente_p13 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[0] * (salida_o1 * (1 - salida_o1)) * self.x[i][1]
-				var gradiente_sesgo11 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[0] * (salida_o1 * (1 - salida_o1)) * 1.0
+				var gradiente_sesgo11 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[0] * (salida_o1 * (1 - salida_o1)) * 1.5
 
 				var gradiente_p12 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[1] * (salida_o2 * (1 - salida_o2)) * self.x[i][0]
 				var gradiente_p14 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[1] * (salida_o2 * (1 - salida_o2)) * self.x[i][1]
-				var gradiente_sesgo12 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[1] * (salida_o2 * (1 - salida_o2)) * 1.0
+				var gradiente_sesgo12 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[1] * (salida_o2 * (1 - salida_o2)) * 1.5
 
 				# Actualización de los pesos
 				self.pesos1[0] -= tasa_aprendizaje * gradiente_p11
@@ -96,7 +96,7 @@ class RedNeuronal:
 				self.pesos2[1] -= tasa_aprendizaje * gradiente_p22
 				self.sesgos2[0] -= tasa_aprendizaje * gradiente_sesgo21
 			
-			#print(error)
+			print(error)
 
 	func clasificacion(x1, x2):
 		var suma_o1 = x1 * self.pesos1[0] + x2 * self.pesos1[2] + self.sesgos1[0]
