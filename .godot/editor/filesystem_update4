@@ -2,3 +2,6 @@ res://neuro_hola.tscn
 res://control.gd
 res://backpropagation/neuro_hola.tscn
 res://backpropagation/control.gd
+res://xor.gd
+res://backpropagation/xor.tscn
+res://backpropagation/xor.gd

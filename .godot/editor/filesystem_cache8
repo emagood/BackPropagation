@@ -1,9 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1734129222.0
+::res://::1734131336.0
 control_2.gd::GDScript::-1::1734127810::0::1::::<>Control<><><>::
 icon.svg::CompressedTexture2D::2910145199678565728::1734127810::1734127911::1::::<><><>d1ea4919be5613e95e0b39c7e9a71245<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 neuro_hola.gd::GDScript::-1::1734127810::0::1::::<>Control<><><>::
-neuro_hola.tscn::PackedScene::5883265684056380968::1734129222::0::1::::<><><><>::res://neuro_hola.gd<>res://backpropagation/control.gd<>res://control_2.gd
-README.md::TextFile::-1::1734127810::0::1::::<><><><>::
-::res://backpropagation/::1734129222.0
-control.gd::GDScript::-1::1734127995::0::1::::<>Control<><><>::
+README.md::TextFile::-1::1734129516::0::1::::<><><><>::
+xor.gd::GDScript::-1::1734131336::0::1::::<>Control<><><>::
+::res://backpropagation/::1734131404.0
+control.gd::GDScript::-1::1734131404::0::1::::<>Control<><><>::
+neuro_hola.tscn::PackedScene::5883265684056380968::1734131404::0::1::::<><><><>::res://backpropagation/control.gd
+xor.tscn::PackedScene::7855651952961445795::1734131721::0::1::::<><><><>::res://xor.gd

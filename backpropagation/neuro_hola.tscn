@@ -10,3 +10,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a5x3x")
+
+[node name="probar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 24.0
+offset_right = 169.0
+offset_bottom = 55.0
+text = "probar"
+
+[node name="entrenar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 24.0
+offset_right = 84.0
+offset_bottom = 55.0
+text = "entrenar"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 66.0
+offset_right = 48.0
+offset_bottom = 89.0
+
+[connection signal="pressed" from="probar" to="." method="_on_probar_pressed"]
+[connection signal="pressed" from="entrenar" to="." method="_on_entrenar_pressed"]
