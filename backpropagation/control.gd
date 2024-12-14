@@ -1,7 +1,7 @@
 extends Control
 var total_entrenado = 0 
 var red_neuronal
-var epoca = 300
+var epoca = 30
 # Datos de 121 carros -> [Antigüedad, costo de salida al mercado]
 
 var x = [[0.0, 1.0], [0.1, 1.0], [0.2, 1.0], [0.3, 1.0], [0.4, 1.0],
@@ -109,14 +109,8 @@ class RedNeuronal:
 			self.pesos2.append(randf())
 		self.sesgos2.append(randf())
 
-	func entrenamiento(tasa_aprendizaje = 0.3, epocas = epoca):
+	func entrenamiento(tasa_aprendizaje = 0.1, epocas = epoca):
 		for k in range(epocas):
-			
-			''' 
-			es solo para saber el total de entrenamientos
-			'''
-			
-			
 			
 			var error = 0.0
 			for i in range(self.x.size()):
