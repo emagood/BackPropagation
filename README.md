@@ -1,4 +1,4 @@
-# BackPropagation
+# BackPropagation estoy usando info de este repo https://github.com/CodigoMaquina/code  mucha informacion 
 
 ## gracias a https://github.com/CodigoMaquina/code/blob/main/machine_learning_python/backpropagation_paso_a_paso.ipynb
 
