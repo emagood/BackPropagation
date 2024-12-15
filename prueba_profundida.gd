@@ -43,11 +43,11 @@ class RedNeuronal:
 		self.y = y
 
 		# Inicialización de los pesos y sesgos
-		for i in range(4):
+		for i in range(6):
 			self.pesos1.append(randf())
-		for i in range(2):
+		for i in range(3):
 			self.sesgos1.append(randf())
-		for i in range(2):
+		for i in range(3):
 			self.pesos2.append(randf())
 		self.sesgos2.append(randf())
 
@@ -58,7 +58,7 @@ class RedNeuronal:
 				# Entradas a las neuronas sigmoides ocultas
 				var suma_o1 = self.x[i][0] * self.pesos1[0] + self.x[i][1] * self.pesos1[2] + self.sesgos1[0]
 				var suma_o2 = self.x[i][0] * self.pesos1[1] + self.x[i][1] * self.pesos1[3] + self.sesgos1[1]
-				
+				#var suma_o3 = 
 				# Salidas de las neuronas sigmoides ocultas
 				var salida_o1 = 1.0 / (1.0 + exp(-suma_o1))
 				var salida_o2 = 1.0 / (1.0 + exp(-suma_o2))
@@ -79,11 +79,11 @@ class RedNeuronal:
 
 				var gradiente_p11 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[0] * (salida_o1 * (1 - salida_o1)) * self.x[i][0]
 				var gradiente_p13 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[0] * (salida_o1 * (1 - salida_o1)) * self.x[i][1]
-				var gradiente_sesgo11 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[0] * (salida_o1 * (1 - salida_o1)) * 1.5
+				var gradiente_sesgo11 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[0] * (salida_o1 * (1 - salida_o1)) * 1
 
 				var gradiente_p12 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[1] * (salida_o2 * (1 - salida_o2)) * self.x[i][0]
 				var gradiente_p14 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[1] * (salida_o2 * (1 - salida_o2)) * self.x[i][1]
-				var gradiente_sesgo12 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[1] * (salida_o2 * (1 - salida_o2)) * 1.5
+				var gradiente_sesgo12 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[1] * (salida_o2 * (1 - salida_o2)) * 1
 
 				# Actualización de los pesos
 				self.pesos1[0] -= tasa_aprendizaje * gradiente_p11

@@ -1,7 +1,7 @@
 extends Control
 var total_entrenado = 0 
 var red_neuronal
-var epoca = 1500
+var epoca = 20000
 # Datos de 121 carros -> [Antigüedad, costo de salida al mercado]
 
 var x = [[0.0, 1.0], [0.1, 1.0], [0.2, 1.0], [0.3, 1.0], [0.4, 1.0],
@@ -109,7 +109,8 @@ class RedNeuronal:
 			self.pesos2.append(randf())
 		self.sesgos2.append(randf())
 
-	func entrenamiento(tasa_aprendizaje = 0.1, epocas = epoca):
+	func entrenamiento(tasa_aprendizaje = 0.3, epocas = epoca):
+		var timer_local = Time.get_ticks_usec()
 		for k in range(epocas):
 			
 			var error = 0.0
@@ -127,8 +128,12 @@ class RedNeuronal:
 				
 				# Salida de la red neuronal
 				var y_gorro = 1.0 / (1.0 + exp(-suma_s))
+				#var y_gorro = tanh(suma_s)
+				#var y_gorro = 1 * (1 - suma_s)
+				#var y_gorro = max(0.001, suma_s) # relu
+				#var y_gorro = log(1 + exp(suma_s)) # softplus
 
-				# Cálculo del error cuadrático
+				# Cálculo del error cuassdrático
 				error += (0.5) * pow(self.y[i] - y_gorro, 2)
 				
 				# Cálculo de los gradientes
@@ -154,8 +159,8 @@ class RedNeuronal:
 				self.pesos2[0] -= tasa_aprendizaje * gradiente_p21
 				self.pesos2[1] -= tasa_aprendizaje * gradiente_p22
 				self.sesgos2[0] -= tasa_aprendizaje * gradiente_sesgo21
-			
-			print(error)
+		prints(" el entrenamiento demoro  (" ,Time.get_ticks_usec() - timer_local,") usec en :" , epoca , " entenamientos")
+			#print(error)
 
 	func clasificacion(x1, x2):
 		var suma_o1 = x1 * self.pesos1[0] + x2 * self.pesos1[2] + self.sesgos1[0]
