@@ -142,7 +142,7 @@ class RedNeuronal:
 			self.pesos2.append(randf())
 		self.sesgos2.append(randf())
 
-	func entrenamiento(tasa_aprendizaje = 0.3, epocas = epoca):
+	func entrenamiento(tasa_aprendizaje = 0.33, epocas = epoca):
 		var timer_local = Time.get_ticks_usec()
 		for k in range(epocas):
 			

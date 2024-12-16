@@ -1,11 +1,9 @@
 res://backpropagation/neuro_hola.tscn
-res://backpropagation/control.gd
 res://backpropagation/xor.tscn
 res://prueba.tscn
 res://prueba_profundida.tscn
 res://prueba_test.tscn
 res://car/coleccion.tscn
 res://car/comun.tscn
-res://car/coleccion.gd
-res://car/mal.gd
-res://car/comun.gd
+res://test_3.gd
+res://backpropagation/control.gd
