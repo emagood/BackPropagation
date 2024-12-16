@@ -142,7 +142,7 @@ class RedNeuronal:
 			self.pesos2.append(randf())
 		self.sesgos2.append(randf())
 
-	func entrenamiento(tasa_aprendizaje = 0.33, epocas = epoca):
+	func entrenamiento(tasa_aprendizaje = 0.4, epocas = epoca):
 		var timer_local = Time.get_ticks_usec()
 		for k in range(epocas):
 			
@@ -183,15 +183,16 @@ class RedNeuronal:
 				var gradiente_sesgo12 = (y_gorro - self.y[i]) * (y_gorro * (1 - y_gorro)) * self.pesos2[1] * (salida_o2 * (1 - salida_o2)) * 1.0
 
 				# Actualización de los pesos
-				self.pesos1[0] -= tasa_aprendizaje * gradiente_p11
-				self.pesos1[1] -= tasa_aprendizaje * gradiente_p12
-				self.pesos1[2] -= tasa_aprendizaje * gradiente_p13
-				self.pesos1[3] -= tasa_aprendizaje * gradiente_p14
-				self.sesgos1[0] -= tasa_aprendizaje * gradiente_sesgo11
-				self.sesgos1[1] -= tasa_aprendizaje * gradiente_sesgo12
-				self.pesos2[0] -= tasa_aprendizaje * gradiente_p21
-				self.pesos2[1] -= tasa_aprendizaje * gradiente_p22
-				self.sesgos2[0] -= tasa_aprendizaje * gradiente_sesgo21
+				for l in range(1):
+					self.pesos1[0] -= tasa_aprendizaje * gradiente_p11
+					self.pesos1[1] -= tasa_aprendizaje * gradiente_p12
+					self.pesos1[2] -= tasa_aprendizaje * gradiente_p13
+					self.pesos1[3] -= tasa_aprendizaje * gradiente_p14
+					self.sesgos1[0] -= tasa_aprendizaje * gradiente_sesgo11
+					self.sesgos1[1] -= tasa_aprendizaje * gradiente_sesgo12
+					self.pesos2[0] -= tasa_aprendizaje * gradiente_p21
+					self.pesos2[1] -= tasa_aprendizaje * gradiente_p22
+					self.sesgos2[0] -= tasa_aprendizaje * gradiente_sesgo21
 		prints(" el entrenamiento demoro  (" ,Time.get_ticks_usec() - timer_local,") usec en :" , epoca , " entenamientos")
 			#print(error)
 
