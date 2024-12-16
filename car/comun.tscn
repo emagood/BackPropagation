@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://diutn67y7aebm"]
+
+[ext_resource type="Texture2D" uid="uid://bn1dsumjpvv6k" path="res://car/comun.PNG" id="1_q3upi"]
+[ext_resource type="Script" path="res://car/comun.gd" id="2_dbdyk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q3upi"]
+font_size = 22
+font_color = Color(0.996078, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dbdyk"]
+font_size = 22
+font_color = Color(0.337255, 1, 0, 1)
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 60.0
+offset_bottom = 60.0
+texture = ExtResource("1_q3upi")
+script = ExtResource("2_dbdyk")
+
+[node name="mal" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "X"
+label_settings = SubResource("LabelSettings_q3upi")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="bien" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -4.0
+offset_right = 40.0
+offset_bottom = 27.0
+text = "B"
+label_settings = SubResource("LabelSettings_dbdyk")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

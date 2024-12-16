@@ -34,10 +34,24 @@ offset_bottom = 23.0
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 66.0
-offset_right = 48.0
-offset_bottom = 89.0
+offset_left = 191.0
+offset_top = 25.0
+offset_right = 231.0
+offset_bottom = 48.0
+
+[node name="autos" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 94.0
+offset_right = 4.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.81, 0.81)
+columns = 11
 
 [connection signal="pressed" from="probar" to="." method="_on_probar_pressed"]
 [connection signal="pressed" from="entrenar" to="." method="_on_entrenar_pressed"]

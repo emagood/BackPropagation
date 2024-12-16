@@ -1,10 +1,13 @@
 extends Control
+
+@onready var ncar = $autos
+var nodes = []
 var total_entrenado = 0 
 var red_neuronal
-var epoca = 20000
+var epoca = 30
 # Datos de 121 carros -> [Antigüedad, costo de salida al mercado]
 
-var x = [[0.0, 1.0], [0.1, 1.0], [0.2, 1.0], [0.3, 1.0], [0.4, 1.0],
+var x : Array = [[0.0, 1.0], [0.1, 1.0], [0.2, 1.0], [0.3, 1.0], [0.4, 1.0],
 	[0.5, 1.0], [0.6, 1.0], [0.7, 1.0], [0.8, 1.0], [0.9, 1.0],
 	[1.0, 1.0], [0.0, 0.9], [0.1, 0.9], [0.2, 0.9], [0.3, 0.9],
 	[0.4, 0.9], [0.5, 0.9], [0.6, 0.9], [0.7, 0.9], [0.8, 0.9],
@@ -46,6 +49,28 @@ var y = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
  #Los datos x y y no se incluyen aquí porque ya los tienes definidos.
 
 func _ready():
+	
+	
+	var long = 0
+	for a in range(x.size()):
+		for l in range(1):
+			if y[long] == 1:
+				var car = load("res://car/coleccion.tscn").instantiate()
+				ncar.add_child(car)
+				nodes.append(car)
+			else:
+				var car = load("res://car/comun.tscn").instantiate()
+				ncar.add_child(car)
+				nodes.append(car)
+		long += 1
+	
+	
+	
+	
+	
+	
+	
+	
 	randomize()
 	#var x = [[0.0, 1.0], [0.1, 1.0], ...]  # Reemplaza con tu array de datos
 	#var y = [0, 0, 0, ...]  # Reemplaza con tu array de etiquetas
@@ -69,13 +94,21 @@ func _ready():
 
 func prueba(nn):
 	var error = 0
-	for k in range(100):
+	for k in range(121):
 		var forward = nn.clasificacion(x[k][0], x[k][1])
 		var presicion = y[k]
 		var redondear = round(forward )
 		if redondear == presicion :
+			nodes[k].valor = presicion
+			nodes[k].obtenido = forward
+			nodes[k].mal.visible = false
+			nodes[k].bien.visible = true
 			prints("la red acerto felicidades :)  redondeo ", redondear, " el dato :" ,y[k] , " la salida bruta : " ,forward)
 		else:
+			nodes[k].valor = presicion
+			nodes[k].obtenido = forward
+			nodes[k].mal.visible = true
+			nodes[k].bien.visible = false
 			push_warning("la red erro prueba entrenar mas :)  redondeo ", redondear, " el dato :" ,y[k] , " la salida bruta : " ,forward)
 			error += 1
 	$Label.text = " total de errores de la prueba es de: ( " + str(error) + " ) , la precicion maxima es 6 "
@@ -188,4 +221,5 @@ func _on_entrenar_pressed() -> void:
 	red_neuronal.entrenamiento()
 	total_entrenado += epoca 
 	$Label2.text = " total de entrenamientos : ( " + str(total_entrenado) + " ) "
+	prueba(red_neuronal)
 	pass # Replace with function body.
